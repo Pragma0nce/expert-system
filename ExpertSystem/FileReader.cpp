@@ -3,7 +3,7 @@
 void FileReader::OpenFile(string filePath)
 {
 	if (filePath.empty()) {
-		std::cout << "Error: file path is empty" << std::endl;
+		OUTPUT.Error("File path is empty");
 		return;
 	}
 
@@ -25,7 +25,7 @@ bool FileReader::GetNextLine(string &str)
 	}
 	else
 	{
-		std::cout << "Error: No file has been opened." << std::endl;
+		OUTPUT.Error("No file has been opened.");
 		return false;
 	}
 }

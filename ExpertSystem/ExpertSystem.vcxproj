@@ -154,6 +154,7 @@
     <ClInclude Include="Parser.h" />
     <ClInclude Include="Proposition.h" />
     <ClInclude Include="Query.h" />
+    <ClInclude Include="Scanner.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ExpertSystem.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Proposition.cpp" />
     <ClCompile Include="Query.cpp" />
+    <ClCompile Include="Scanner.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

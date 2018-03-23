@@ -21,13 +21,58 @@ int main()
 
 	while (reader.GetNextLine(line))
 	{
-		system.AddRule(line);
+		if (line[0] == '?')
+		{
+			system.AddQuery(line);
+		}
+		else if (line[0] == '=')
+		{
+			int i = 1;
+			while (line[i]) 
+			{
+				if (line[i] == '#')
+					break;
+
+				system.AddFact(line[i], true);
+				i++;
+			}
+		}
+		else if (line[0] != '#')
+		{
+			string rule = "";
+			for (auto i : line)
+			{
+				if (i == '#') break;
+				rule += i;
+			}
+			system.AddRule(rule);
+		}
 	}
 
+
+	OUTPUT.Debug("RULES");
 	for (auto i : *system.GetRules())
 	{
-		std::cout << i << std::endl;
+		OUTPUT.Write(i.GetAntecedant() + " => " + i.GetConsequent());
 	}
+
+	OUTPUT.Debug("FACTS");
+	string conv;
+	for (auto i : *system.GetFacts())
+	{
+		if (i.GetState() == false) conv = "FALSE";
+		else conv = "TRUE";
+
+		std::cout << i.GetSymbol() << " = " << conv <<  std::endl;
+	}
+
+	OUTPUT.Debug("QUERIES");
+	for (auto i : *system.GetQueries())
+	{
+		OUTPUT.Write(i);
+	}
+
+	system.SolveQueries();
 
 	WaitForInput();
 	return 0;

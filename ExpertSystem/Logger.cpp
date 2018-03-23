@@ -6,7 +6,7 @@ void Logger::Write(std::string message)
 }
 void Logger::Error(std::string message)
 {
-	std::cout << "[ERROR]: " << std::endl;
+	std::cout << "[ERROR]: " << message << std::endl;
 }
 void Logger::Debug(std::string message)
 {
